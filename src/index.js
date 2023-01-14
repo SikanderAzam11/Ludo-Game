@@ -3,12 +3,18 @@ import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.js";
 import { Provider } from 'react-redux';
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import dataReducer from "./dataSlice";
 import { Physics } from "@react-three/rapier";
+import switchPlayer from "./switchPlayersSlice";
 const root = ReactDOM.createRoot(document.querySelector("#root"));
+const rootReducer = combineReducers({
+  data: dataReducer,
+  switchPlay: switchPlayer,
+});
+
 const store = configureStore({
-  reducer: dataReducer,
+  reducer: rootReducer,
 })
 root.render(
   <>

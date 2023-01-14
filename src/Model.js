@@ -5,52 +5,32 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Html, Image, useGLTF } from "@react-three/drei";
-import { RigidBody, useRapier } from "@react-three/rapier";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import * as three from "three";
 import gsap from "gsap";
 import Green from "./GreenPlayer";
 import Blue from "./BluePlayer";
 import Red from "./RedPlayer";
 import Yellow from "./YellowPlayer";
+import { useSelector } from "react-redux";
 const coords = new three.Vector2(-1, -1);
 export const Model = (props) => {
   const model = useGLTF("./Ludo.glb");
   console.log(model);
   // console.log(location);
-  const [activePlayer,setactivePlayer] = useState('yellow');
-  {
-    /** Refs   */
-  }
-  const dice = useRef();
- 
-  const blueGeti1 = useRef();
-  const blueGeti2 = useRef();
-  const blueGeti3 = useRef();
-  const blueGeti4 = useRef();
-  const redGeti1 = useRef();
-  const redGeti2 = useRef();
-  const redGeti3 = useRef();
-  const redGeti4 = useRef();
-  const greenGeti1 = useRef();
-  const greenGeti2 = useRef();
-  const greenGeti3 = useRef();
-  const greenGeti4 = useRef();
-  const Id = {
-    yellowPlayersid: [239, 204, 240, 209],
-    bluePlayersid: [84, 85, 111, 112],
-    greenPlayersid: [89, 90, 91, 92],
-    redPlayersid: [103, 109, 127, 135],
-  };
+
+  const state = useSelector(state => state.switchPlay);
+  console.log(state.activePlayer);
+  
+
   return (
     <>
       <group {...props} dispose={null}>
         
-      <Green model={model} active= {activePlayer}/> 
-      <Blue model={model} active= {activePlayer}/>
-      <Red model={model} active= {activePlayer}/>
-      <Yellow model={model} active= {activePlayer}/>
+      <Green model={model} active= {state.activePlayer}/> 
+      <Blue model={model} active= {state.activePlayer}/>
+      <Red model={model} active= {state.activePlayer}/>
+      <Yellow model={model} active= {state.activePlayer}/>
       <mesh
         castShadow
         receiveShadow
