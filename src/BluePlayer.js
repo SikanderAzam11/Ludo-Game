@@ -27,6 +27,15 @@ const BluePlayer = (props) => {
         rotation={[0, Math.PI / 2, 0]}
         scale={0.69}
       />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={props.model.nodes.BlueGeti4001.geometry}
+        material={props.model.materials.blue}
+        position={[11.41, 2.54, 6.09]}
+        rotation={[0, Math.PI / 2, 0]}
+        scale={0.69}
+      />
     </>
 }
 export default BluePlayer;
