@@ -9,58 +9,58 @@ const dataSlice = createSlice({
         motion: false,
         location: 0,
         moved: false,
-        id: 211
+        id: 314
       },
       geti2: {
         active: true,
         motion: false,
         location: 0,
         moved: false,
-        id: 212
+        id: 315
       },
       geti3: {
         active: true,
         motion: false,
         location: 0,
         moved: false,
-        id: 213
+        id: 316
       },
       geti4: {
         active: true,
         motion: false,
         location: 0,
         moved: false,
-        id:214
+        id:317
       }
     },
     bluePlayer: {
       geti1: {
         active: true,
         motion: false,
-        location: 0,
+        location: 10,
         moved: false,
-        id: 204
+        id: 303
       },
       geti2: {
         active: true,
         motion: false,
-        location: 0,
+        location: 10,
         moved: false,
-        id: 205
+        id: 304
       },
       geti3: {
         active: true,
         motion: false,
-        location: 0,
+        location: 10,
         moved: false,
-        id: 206
+        id: 305
       },
       geti4: {
         active: true,
         motion: false,
-        location: 0,
+        location: 10,
         moved: false,
-        id:207
+        id:306
       }
       },
     },
@@ -80,12 +80,10 @@ const dataSlice = createSlice({
       },
       setMotion: (state,payload) => {
         console.log(payload);
-        
         for(let data in state[payload.payload]) {
-          console.log(state[payload.payload][data]);
           state[payload.payload][data].motion = true
+          console.log(state[payload.payload][data]);
         }
-        return state
       }
       }
 });

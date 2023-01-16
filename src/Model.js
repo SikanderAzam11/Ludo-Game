@@ -26,7 +26,6 @@ export const Model = (props) => {
   return (
     <>
       <group {...props} dispose={null}>
-        
       <Green model={model} active= {state.activePlayer}/> 
       <Blue model={model} active= {state.activePlayer}/>
       <Red model={model} active= {state.activePlayer}/>
