@@ -3,14 +3,13 @@ let i = 0;
 const switchPlayers = createSlice({
     name: 'switchPlayers',
     initialState: {
-        players: ['yellow','blue'],
-        activePlayer: 'yellow',
+        players: ['Yellow','Blue'],
+        activePlayer: 'Yellow',
     },
     reducers: {
         switchIt: (state) => {
             ++i;
-            if(i > 1) i = 0 
-            console.log(i);
+            if(i > 1) i = 0
             state.activePlayer = state.players[i]
         }
     }

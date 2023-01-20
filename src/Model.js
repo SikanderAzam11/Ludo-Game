@@ -1,35 +1,45 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import * as three from "three";
-import gsap from "gsap";
-import Green from "./GreenPlayer";
-import Blue from "./BluePlayer";
-import Red from "./RedPlayer";
 import Yellow from "./YellowPlayer";
 import { useSelector } from "react-redux";
-const coords = new three.Vector2(-1, -1);
+import { useFrame } from "@react-three/fiber";
 export const Model = (props) => {
   const model = useGLTF("./Ludo.glb");
-  console.log(model);
-  // console.log(location);
-
   const state = useSelector(state => state.switchPlay);
-  console.log(state.activePlayer);
-  
-
+  const chest = useRef();  
+   let playerName;
+   let house;
+   let textColor;
+   let material;
+  if(state.activePlayer === 'Yellow') {
+    playerName = 'yellowPlayer';
+    house =  model.nodes.YellowHouse.position
+    textColor = 'yellow'
+    material =  model.materials.yellow
+  }
+  if(state.activePlayer === 'Blue') {
+    playerName = 'bluePlayer';
+    house =  model.nodes.BlueHouse.position
+    textColor = 'blue'
+    material =  model.materials.yellow
+  }
+  useFrame(() => {
+    chest.current.rotation.y +=0.005
+  })
+    
   return (
     <>
       <group {...props} dispose={null}>
-      <Green model={model} active= {state.activePlayer}/> 
-      <Blue model={model} active= {state.activePlayer}/>
+     <Yellow playerName = {playerName}
+      house={house} 
+      geti = 'YellowGeti'
+      textColor = {textColor}
+      model = {model}
+      material={material}   
+      active= {state.activePlayer}/>
+      {/* <Blue model={model} active= {state.activePlayer}/>
       <Red model={model} active= {state.activePlayer}/>
-      <Yellow model={model} active= {state.activePlayer}/>
+      <Yellow model={model} active= {state.activePlayer}/> */}
       <mesh
         castShadow
         receiveShadow
@@ -446,6 +456,7 @@ export const Model = (props) => {
           receiveShadow
           geometry={model.nodes.Plane026_1.geometry}
           material={model.materials["Lowpol Cartoon Chest"]}
+          ref={chest}
         />
       </group>
       <group

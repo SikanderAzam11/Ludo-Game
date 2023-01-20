@@ -15,7 +15,7 @@ import {
 } from "@react-three/drei";
 import { Model } from "./Model";
 import { useRef } from "react";
-import { Debug, RigidBody, useRapier } from "@react-three/rapier";
+import { Debug, Physics, RigidBody, useRapier } from "@react-three/rapier";
 
 export function Experience() {
   const dice = useRef()
@@ -26,8 +26,10 @@ export function Experience() {
   <OrbitControls  makeDefault/>
   {/* <primitive object={model.scene}/> */}
   <Model />
-  
-  {/* <Dice /> */}
+  {/* <Physics>
+
+  <Dice />
+  </Physics> */}
   </> 
 }
 export default Experience;
