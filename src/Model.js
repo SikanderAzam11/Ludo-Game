@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import Yellow from "./YellowPlayer";
+import Game from "./GameLogic";
 import { useSelector } from "react-redux";
 import { useFrame } from "@react-three/fiber";
+import { useState } from "react";
 export const Model = (props) => {
   const model = useGLTF("./Ludo.glb");
   const state = useSelector(state => state.switchPlay);
@@ -11,35 +12,48 @@ export const Model = (props) => {
    let house;
    let textColor;
    let material;
-  if(state.activePlayer === 'Yellow') {
+   let active;
+  if(state.activePlayer === 'yellowPlayer') {
     playerName = 'yellowPlayer';
     house =  model.nodes.YellowHouse.position
     textColor = 'yellow'
+    active = 'Yellow'
     material =  model.materials.yellow
   }
-  if(state.activePlayer === 'Blue') {
+  if(state.activePlayer === 'bluePlayer') {
     playerName = 'bluePlayer';
     house =  model.nodes.BlueHouse.position
     textColor = 'blue'
+    active = 'Blue'
     material =  model.materials.yellow
   }
+  if(state.activePlayer === 'greenPlayer') {
+    playerName = 'greenPlayer';
+    house =  model.nodes.GreenHouse.position
+    active = 'Green'
+    textColor = 'green'
+    material =  model.materials.Gras
+  }
+  if(state.activePlayer === 'redPlayer') {
+    playerName = 'redPlayer';
+    house =  model.nodes.RedHouse.position
+    active = 'Red'
+    textColor = 'red'
+    material =  model.materials.Roof
+  }
+  
   useFrame(() => {
     chest.current.rotation.y +=0.005
   })
-    
   return (
     <>
       <group {...props} dispose={null}>
-     <Yellow playerName = {playerName}
-      house={house} 
-      geti = 'YellowGeti'
+     <Game playerName = {playerName}
+      house={house}
       textColor = {textColor}
       model = {model}
       material={material}   
-      active= {state.activePlayer}/>
-      {/* <Blue model={model} active= {state.activePlayer}/>
-      <Red model={model} active= {state.activePlayer}/>
-      <Yellow model={model} active= {state.activePlayer}/> */}
+      active= {active}/>
       <mesh
         castShadow
         receiveShadow

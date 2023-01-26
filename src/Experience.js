@@ -1,6 +1,6 @@
 import { useThree, extend, useFrame } from "@react-three/fiber";
 import * as THREE from 'three'
-import {Dice} from './Dice'
+import Dice from './Dice/Dice'
 import { Html, Text, Center, Effects, Text3D } from "@react-three/drei";
 import {
   Mask,
@@ -21,15 +21,9 @@ export function Experience() {
   const dice = useRef()
   
   return<>
-  <Environment preset="sunset"/>
-  <color attach={'background'} args={['grey']}/>
+    <color attach={'background'} args={['grey']}/>
   <OrbitControls  makeDefault/>
-  {/* <primitive object={model.scene}/> */}
   <Model />
-  {/* <Physics>
-
-  <Dice />
-  </Physics> */}
   </> 
 }
 export default Experience;
