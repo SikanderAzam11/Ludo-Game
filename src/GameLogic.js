@@ -4,9 +4,7 @@ import gsap from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { reset, setLocation, setMotion, setWin } from "./dataSlice";
 import { switchIt, winner } from "./switchPlayersSlice";
-import * as three from "three";
 import { useFrame } from "@react-three/fiber";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Dice from "./Dice/Dice";
 let player;
 let randomNum;
@@ -143,7 +141,6 @@ const Game = (props) => {
           player.location === opponent[get].location &&
           !opponent[get].safe
         ) {
-          console.log(player.location);
           for (let ref in refs) {
             if (refs[ref].current.name === opponent[get].name) {
               gsap.to(refs[ref].current.position, {
@@ -197,9 +194,7 @@ const Game = (props) => {
    * Dice Roll Function
    */
   const roll = (num) => {
-    // diceEl = document.querySelector(".dice");
     randomNum = num;
-    // diceEl.src = `dice-${randomNum}.png`;
     value = randomNum;
     if (randomNum === 6) {
       dispatch(setMotion(playerName));
@@ -235,7 +230,6 @@ const Game = (props) => {
       j = 1;
       function myLoop() {
         setTimeout(function () {
-          // const tile = Number(props.model.nodes[`Tile${player.location + i}`].name.match(/\d/g).join(''))
           if (locate + i >= 41 && playerName !== "yellowPlayer") {
             locate = 0;
             j = 1;
