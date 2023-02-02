@@ -31,12 +31,13 @@ const Loader = () => {
 };
 const newGame = (e) => {
   gsap.to(
-    document.querySelector('.diceEle'),
+    document.querySelector(".diceEle"),
     {
-      height: '0%',
+      height: "0%",
       duration: 3,
       ease: "power1.out",
-      onComplete: () => (document.querySelector('.diceEle').style.display = "none"),
+      onComplete: () =>
+        (document.querySelector(".diceEle").style.display = "none"),
     },
     "+=1"
   );
@@ -46,10 +47,10 @@ const store = configureStore({
 });
 root.render(
   <>
-    <Canvas className="diceEle">
-      <Dice newGame = {newGame} />
-    </Canvas>
     <Suspense fallback={<Loader />}>
+    <Canvas className="diceEle">
+      <Dice newGame={newGame} />
+    </Canvas>
       <Canvas
         camera={{
           fov: 45,

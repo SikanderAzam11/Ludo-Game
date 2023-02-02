@@ -286,68 +286,15 @@ label {
   border-radius: 100px;
   cursor: pointer;
 }
-
-#pacman {
-  position: absolute;
-  border-radius: 800px;
-  width: 20px;
-  height: 20px;
-  background: #fbf903;
-  right: 62%;
-  cursor: pointer;
-  clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 50%, 50% 50%, 50% 0%);
-  rotate: 45deg;
-  transition: transform 0.3s ease;
-  z-index: 1;
-  animation: bite 0.4s ease infinite;
-}
-
-#circleOne {
-  position: absolute;
-  background: white;
-  width: 4px;
-  height: 4px;
-  right: 50%;
-  border-radius: 50px;
-  transition: background 0s 0.1s;
-}
-
-#circleTwo {
-  position: absolute;
-  background: white;
-  width: 4px;
-  height: 4px;
-  border-radius: 50px;
-  right: 35%;
-  transition: background 0s 0.11s;
-}
-
-#circleThree {
-  position: absolute;
-  background: white;
-  width: 4px;
-  height: 4px;
-  border-radius: 50px;
-  right: 20%;
-  transition: background 0s 0.12s;
-}
-
-@keyframes bite {
-  0% {
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 50%, 50% 50%, 50% 0%);
-  }
-
-  50% {
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 10%, 50% 50%, 90% 0%);
-  }
-
-  100% {
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 50%, 50% 50%, 50% 0%);
-  }
-}
 .progress-bar {
   height: 20px;
-  background: #1da1f2;
+  background-image:linear-gradient( to right,
+  #EB6952 20%,
+  #FAAD17 20% 40%,
+  #7E46DD 40% 60%,
+  #4FA6DB 60% 80%,
+  #B3B3B3 80%
+);
   box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
   border-radius: 50px;
   transition: all 0.5s;
