@@ -20,7 +20,7 @@ const Dice = (props) => {
     <>
       <div className="box">
         <div
-          className="container"
+          className="contain"
           style={{
             visibility: `${props.dice ? "visible" : "hidden"}`,
           }}

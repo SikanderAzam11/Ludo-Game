@@ -8,34 +8,35 @@ import dataReducer from "./dataSlice";
 import switchPlayer from "./switchPlayersSlice";
 import gsap from "gsap";
 import { Suspense, useEffect } from "react";
-import { Html, useProgress } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
+import { Dice } from "./diceModel";
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 const rootReducer = combineReducers({
   data: dataReducer,
   switchPlay: switchPlayer,
 });
-
 const Loader = () => {
-  const { progress,loaded } = useProgress();
+  const { progress, loaded } = useProgress();
   return (
-    <Html>
     <div className="container">
       <h2>Loading item: {loaded}</h2>
       <div className="progress">
-        <div className="progress-bar" style={{width :`${progress}%`, position: "relative" }}></div>
+        <div
+          className="progress-bar"
+          style={{ width: `${progress}%`, position: "relative" }}
+        ></div>
       </div>
     </div>
-    </Html>
   );
 };
 const newGame = (e) => {
   gsap.to(
-    e.target.parentElement,
+    document.querySelector('.diceEle'),
     {
-      y: 1000,
+      height: '0%',
       duration: 3,
       ease: "power1.out",
-      onComplete: () => (e.target.parentElement.style.display = "none"),
+      onComplete: () => (document.querySelector('.diceEle').style.display = "none"),
     },
     "+=1"
   );
@@ -45,10 +46,10 @@ const store = configureStore({
 });
 root.render(
   <>
-      <main>
-        <h1 className="ludo">Ludo Game</h1>
-        <button onClick={(e) => newGame(e)}>New Game</button>
-      </main>
+    <Canvas className="diceEle">
+      <Dice newGame = {newGame} />
+    </Canvas>
+    <Suspense fallback={<Loader />}>
       <Canvas
         camera={{
           fov: 45,
@@ -57,11 +58,10 @@ root.render(
           position: [-4, 15, 50],
         }}
       >
-        <Suspense fallback={<Loader />}>
         <Provider store={store}>
           <Experience />
         </Provider>
-    </Suspense>
       </Canvas>
+    </Suspense>
   </>
 );

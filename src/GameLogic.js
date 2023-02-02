@@ -52,7 +52,6 @@ const Game = (props) => {
   let i;
   let j;
   pos.y = 8;
-  let diceEl;
   let geti;
   /**
    * Material Check
@@ -311,6 +310,7 @@ const Game = (props) => {
           userSelect: "none",
         }}
         fullscreen
+        center
       >
         <Dice roll={roll} dice={dice} color={props.textColor} />
       </Html>
