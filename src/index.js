@@ -37,7 +37,7 @@ const newGame = (e) => {
       duration: 3,
       ease: "power1.out",
       onComplete: () =>
-        (document.querySelector(".diceEle").style.display = "none"),
+        (document.querySelector(".diceEle").remove()),
     },
     "+=1"
   );
