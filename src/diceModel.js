@@ -17,7 +17,7 @@ export function Dice(props) {
   });
   return (
     <>
-      <Environment files="./dam_road_1k.hdr" />
+      <Environment files="/sunset.hdr" />
       <Html 
       fullscreen>
         <main>
