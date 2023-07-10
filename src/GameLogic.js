@@ -293,7 +293,7 @@ const Game = (props) => {
   };
   return (
     <>
-      <Environment preset="sunset"/>
+      <Environment files="./dam_road_1k.hdr"/>
       <pointLight
         intensity={5}
         distance={10}
